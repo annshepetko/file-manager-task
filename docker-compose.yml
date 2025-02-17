@@ -1,0 +1,18 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"  # Відкриває порт 6379 для доступу до Redis
+    networks:
+      - mynetwork
+    volumes:
+      - redis-data:/data  # Зберігання даних Redis між перезапусками контейнера
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local
